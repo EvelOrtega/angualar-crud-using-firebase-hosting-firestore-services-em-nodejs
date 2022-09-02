@@ -1,0 +1,58 @@
+<div class="table-container">
+  <button mat-button color="primary" (click)="openDialog(null)">
+    Adicionar Funcionário
+  </button>
+
+  <table mat-table #table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+
+    <!-- Nome completo Column -->
+    <ng-container matColumnDef="nomeCompleto">
+      <th mat-header-cell *matHeaderCellDef>Nome</th>
+      <td mat-cell *matCellDef="let element">{{ element.nomeCompleto }}</td>
+    </ng-container>
+
+    <!-- idade Column -->
+    <ng-container matColumnDef="idade">
+      <th mat-header-cell *matHeaderCellDef>Idade</th>
+      <td mat-cell *matCellDef="let element">{{ element.idade }}</td>
+    </ng-container>
+
+    <!-- contato Column -->
+    <ng-container matColumnDef="contato">
+      <th mat-header-cell *matHeaderCellDef>Contato</th>
+      <td mat-cell *matCellDef="let element">{{ element.contato }}</td>
+    </ng-container>
+
+    <!-- departamento Column -->
+    <ng-container matColumnDef="departamento">
+      <th mat-header-cell *matHeaderCellDef>Departamento</th>
+      <td mat-cell *matCellDef="let element">{{ element.departamento }}</td>
+    </ng-container>
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>Ações</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.action }}
+        <button mat-icon-button (click)="editElement(element)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          color="primary"
+          (click)="deleteElement(element.id)"
+        >
+          <mat-icon>clear</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

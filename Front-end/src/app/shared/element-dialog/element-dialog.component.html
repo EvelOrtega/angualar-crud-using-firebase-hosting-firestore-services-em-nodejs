@@ -1,0 +1,38 @@
+<h1 *ngIf="!isChange" mat-dialog-title>Cadastrar Funcionário</h1>
+<h1 *ngIf="isChange" mat-dialog-title>Atualizar Funcionário</h1>
+
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Nome</mat-label>
+    <input matInput [(ngModel)]="data.nomeCompleto" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>idade</mat-label>
+    <input matInput [(ngModel)]="data.idade" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>contato</mat-label>
+    <input matInput [(ngModel)]="data.contato" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>departamento</mat-label>
+    <input matInput [(ngModel)]="data.departamento" />
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button
+    mat-button
+    [mat-dialog-close]="data"
+    cdkFocusInitial
+    *ngIf="!isChange"
+  >
+    Criar
+  </button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial *ngIf="isChange">
+    Atualizar
+  </button>
+</div>
