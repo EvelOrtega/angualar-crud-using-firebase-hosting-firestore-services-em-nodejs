@@ -72,6 +72,7 @@ export class HomeComponent implements OnInit {
               const index = this.dataSource.findIndex((p) => p.id === data.id);
               this.dataSource[index] = data;
               this.table.renderRows();
+              window.alert('funcionario editado com sucesso!');
             });
         } else {
           this.funcionarioService
@@ -80,9 +81,12 @@ export class HomeComponent implements OnInit {
               this.dataSource.push(data);
               this.table.renderRows();
             });
+          window.alert('funcionario criado com sucesso!');
         }
       }
-      window.location.reload();
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
     });
   }
 
